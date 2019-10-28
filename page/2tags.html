@@ -38,7 +38,9 @@ icon: fa fa-tags
 <!--        <div class="card-body">-->
           <ul class="table-of-content">
             {% for tag in site.tags %}
-              <li><a href="#{{tag | first}}">{{tag | first}}</a></li>
+              <li><a href="#{{tag | first}}">{{tag | first}}</a>
+              <span class="badge badge-secondary">{{tag.last | size}}</span>
+              </li>
             {% endfor %}
           </ul>
 <!--        </div>-->

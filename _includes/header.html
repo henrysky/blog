@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark justify-content-between fixed-top shadow">
+    <div class="container">
+        <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }} <small>{{ site.description }}</small></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                {% for my_page in site.pages %}
+                {% if my_page.type == 'menu' %}
+                <li class="nav-item">
+                    {% if my_page.url == page.url %}
+                    <a class="nav-link active" href="{{ my_page.url | prepend: site.baseurl }}">
+                        {% else %}
+                        <a class="nav-link" href="{{ my_page.url | prepend: site.baseurl }}">
+                            {% endif %}
+                            <i class="{{my_page.icon}}"></i> {{ my_page.title }}
+                        </a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>

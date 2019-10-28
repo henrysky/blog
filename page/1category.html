@@ -1,0 +1,48 @@
+---
+layout: default
+title: Categories
+permalink: /category/
+type: menu
+icon: fa fa-th-list
+---
+<div class="row">
+  <div class="col-md-9">
+    <div class="card">
+      <div class="card-body">
+        <p>{{site.categories.size}} Category in Total</p>
+        <hr>
+        {% for category in site.categories %}
+          <p style="font-size: 18px; font-weight: bold;" id="{{category | first}}">{{category | first}}</p>
+          <ul class="tags-list">
+            {% for post in category.last %}
+              <li>
+                <time>
+                  {{ post.date | date:"%Y-%b-%d" }} -
+                </time>
+                <a href="{{ post.url  | prepend: site.baseurl }}">{{ post.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+          {% if forloop.last == false %}
+            <hr>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 hidden-sm d-none d-sm-block">
+    <div class="post-right" style="position: fixed; width: 273px; height: auto !important; top: 75px;">
+      {% include sidebar-search.html %}
+      <div class="card">
+        <div class="card-header"><i class="fa fa-th-list"></i> Categories</div>
+<!--        <div class="card-body">-->
+          <ul class="table-of-content">
+            {% for category in site.categories %}
+              <li><a href="#{{category | first}}">{{category | first}}</a></li>
+            {% endfor %}
+          </ul>
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+</div>

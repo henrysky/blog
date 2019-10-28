@@ -1,0 +1,45 @@
+# Welcome to Jekyll!
+#
+# 基本信息
+title: Blog - Henry Leung
+email: henryskyleung@gmail.com
+description:
+baseurl: "/blog" # the subpath of your site, e.g. /blog
+url: "https://henrysky.github.io/"  # the base hostname & protocol for your site, e.g. http://example.com
+github_username: henrysky
+
+# date format
+permalink: /:year/:month/:day/:title/
+excerpt_separator: "\n\n\n\n"
+
+disqus_shortname: henrysky-blog
+
+google_analytics_id:
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
+  syntax_highlighter: rouge
+
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# 分页
+paginate: 10
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/

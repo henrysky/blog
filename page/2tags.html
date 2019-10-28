@@ -1,0 +1,48 @@
+---
+layout: default
+title: Tags
+permalink: /tag/
+type: menu
+icon: fa fa-tags
+---
+<div class="row">
+  <div class="col-md-9">
+    <div class="card">
+      <div class="card-body">
+        <p>{{site.tags.size}} Tags in Total</p>
+        <hr>
+        {% for tag in site.tags %}
+          <p style="font-size: 18px; font-weight: bold;" id="{{tag | first}}">{{tag | first}}</p>
+          <ul class="tags-list">
+            {% for post in tag.last %}
+            <li>
+              <time>
+                {{ post.date | date:"%Y-%b-%d" }} -
+              </time>
+              <a href="{{ post.url  | prepend: site.baseurl }}">{{ post.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% if forloop.last == false %}
+            <hr>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 hidden-sm d-none d-sm-block">
+    <div class="post-right" style="position: fixed; width: 273px; height: auto !important; top: 75px;">
+      {% include sidebar-search.html %}
+      <div class="card">
+        <div class="card-header"><i class="fa fa-tags"></i> Tags</div>
+<!--        <div class="card-body">-->
+          <ul class="table-of-content">
+            {% for tag in site.tags %}
+              <li><a href="#{{tag | first}}">{{tag | first}}</a></li>
+            {% endfor %}
+          </ul>
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+</div>

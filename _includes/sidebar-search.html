@@ -1,0 +1,20 @@
+<div id="site_search" class="card">
+    <div class="has-feedback">
+        <input type="text" id="search_box" class="form-control" placeholder="Search...">
+        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+    </div>
+    <ul class="list-group list-group-flush" id="search_results"></ul>
+</div>
+
+<script src="{{ '/js/jekyll-search.min.js' | prepend: site.baseurl }}"></script>
+<script type="text/javascript">
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search_box'),
+        resultsContainer: document.getElementById('search_results'),
+        json: '{{ site.baseurl }}/search_data.json',
+        searchResultTemplate: '<li class="list-group-item"><a href="{url}" title="{desc}">{title}</a></li>',
+        noResultsText: '<li class="list-group-item">No results found</li>',
+        limit: 10,
+        fuzzy: false,
+    });
+</script>

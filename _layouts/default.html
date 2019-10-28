@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% seo %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+          integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{{ '/css/main.css' | prepend: site.baseurl }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@16/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script src="{{ '/js/main.js' | prepend: site.baseurl }}"></script>
+
+    {% if site.google_analytics_id %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{site.google_analytics_id}}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', '{{site.google_analytics_id}}');
+    </script>
+    {% endif %}
+</head>
+
+<body class="gruvbox-dark">
+<script>
+    // https://github.com/gettalong/kramdown/issues/626
+    // make mathjax 3.0 works with kramdown
+    MathJax = {
+        options: {
+            renderActions: {
+                find: [10, function (doc) {
+                    for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                        const display = !!node.type.match(/; *mode=display/);
+                        const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                        const text = document.createTextNode('');
+                        node.parentNode.replaceChild(text, node);
+                        math.start = {
+                            node: text,
+                            delim: '',
+                            n: 0
+                        };
+                        math.end = {
+                            node: text,
+                            delim: '',
+                            n: 0
+                        };
+                        doc.math.push(math);
+                    }
+                }, '']
+            }
+        }
+    };
+
+    // https://github.com/mathjax/MathJax-demos-web/blob/master/load-mathjax/load-mathjax.md
+    // load mathjax 3.0 only when needed
+    (function () {
+        if (document.body.querySelector('math') ||
+            document.body.textContent.match(/(?:\$|\\\(|\\\[|\\begin\{.*?})/)) {
+            if (!window.MathJax) {
+                window.MathJax = {
+                    tex: {
+                        inlineMath: {
+                            '[+]': [
+                                ['$', '$']
+                            ]
+                        }
+                    }
+                };
+            }
+            var script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+            document.head.appendChild(script);
+        }
+    })();
+</script>
+
+<script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+        speed: 500, // Integer. How fast to complete the scroll in milliseconds
+        easing: 'easeInOutCubic', // Easing pattern to use
+        offset: 55, // Integer. How far to offset the scrolling anchor location in pixels
+    });
+</script>
+
+<div class="wrapper">
+    <header>
+        {% include header.html %}
+    </header>
+
+    <section class="container">
+        {{ content }}
+    </section>
+</div>
+<div class="back-to-top">
+    <a href="javascript:;">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+</body>
+
+</html>

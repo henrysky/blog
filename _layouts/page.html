@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<div class="row">
+    <div class="col-md-9" style="overflow-x: hidden;">
+        <div class="card">
+            <div class="card-body">
+                <h1>{{page.title}}</h1>
+                <hr>
+                {{content}}
+            </div>
+        </div>
+        {% include comments.html %}
+    </div>
+    <div class="col-md-3 hidden-sm d-none d-sm-block">
+        <div class="post-right" style="position: fixed; width: 273px; height: auto !important; top: 75px;">
+            <div class="card">
+                <div class="card-header"><i class="fa fa-list-ul"></i> Content</div>
+                <div class="card-body toc">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

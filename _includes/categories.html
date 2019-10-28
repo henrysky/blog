@@ -1,0 +1,21 @@
+{% if post %}
+{% assign category_size = post.categories | size %}
+{% if category_size > 0 %}
+<span class="item">
+      <i class="fa fa-th-list"></i>
+      {% for category in post.categories %}
+          <a href="{{ site.baseurl }}/category/#{{category}}">{{category}}</a>
+      {% endfor %}
+    </span>
+{% endif %}
+{% else if page %}
+{% assign category_size = page.categories | size %}
+{% if category_size > 0 %}
+<span class="item">
+    <i class="fa fa-th-list"></i>
+    {% for category in page.categories %}
+        <a href="{{ site.baseurl }}/category/#{{category}}">{{category}}</a>
+    {% endfor %}
+  </span>
+{% endif %}
+{% endif %}

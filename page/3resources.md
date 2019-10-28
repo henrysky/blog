@@ -16,6 +16,6 @@ icon: fa fa-bookmark
 
 ## Software Resources
 
-* 123
-* 456
+* Tensorflow: <br>[https://www.tensorflow.org/](https://www.tensorflow.org/)
+* Anaconda: <br>[https://www.anaconda.com/](https://www.anaconda.com/)
 

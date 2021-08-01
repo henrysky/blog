@@ -39,7 +39,7 @@ icon: fa fa-th-list
           <ul class="table-of-content">
             {% for category in site.categories %}
               <li><a href="#{{category | first}}">{{category | first}}</a>
-              <span class="badge badge-secondary">{{category.last | size}}</span>
+              <span class="badge bg-secondary">{{category.last | size}}</span>
               </li>
             {% endfor %}
           </ul>

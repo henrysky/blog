@@ -39,7 +39,7 @@ icon: fa fa-tags
           <ul class="table-of-content">
             {% for tag in site.tags %}
               <li><a href="#{{tag | first}}">{{tag | first}}</a>
-              <span class="badge badge-secondary">{{tag.last | size}}</span>
+              <span class="badge bg-secondary">{{tag.last | size}}</span>
               </li>
             {% endfor %}
           </ul>

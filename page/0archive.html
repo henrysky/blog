@@ -51,7 +51,7 @@ icon: fa fa-archive
             {% assign postsByMonth = site.posts | group_by_exp: "post", "post.date | date: '%Y %B'" %}
             {% for year in postsByYear %}
             <li><a href="#y{{year.name}}">{{year.name}}</a>
-              <span class="badge badge-secondary">{{year.items | size}}</span>
+              <span class="badge bg-secondary">{{year.items | size}}</span>
             </li>
               <ul>
                 {% for month in postsByMonth %}

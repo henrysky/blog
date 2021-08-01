@@ -83,8 +83,9 @@ $(function() {
         backToTop.removeClass('back-to-top-show');
       }
     });
-    backToTop.click(function() {
-      $('html,body').animate({ scrollTop: 0 }, 700);
-    });
-  }, 1000);
+     $('.back-to-top').click(function(){
+  $('html, body').animate({scrollTop : 0}, 200);
+  return false;
+ });
+  }, 50);
 });

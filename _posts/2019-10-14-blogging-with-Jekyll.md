@@ -45,6 +45,7 @@ to see the new changes. If new changes are satisfying, you can commit and push t
 
 ## Python code
 
+{% include codeHeader.html %}
 ``` python
 import numpy as np
 

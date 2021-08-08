@@ -1,25 +1,5 @@
 $(function() {
   setTimeout(() => {
-    var next_tip = localStorage.getItem('next_tip');
-    var adsbygoogle = $('.adsbygoogle').html();
-    var adblock = false;
-    if (adsbygoogle === undefined || adsbygoogle === '') {
-      if (!next_tip) {
-        adblock = true;
-      } else if (next_tip && new Date().getTime() > next_tip) {
-        adblock = true;
-      }
-    }
-    if (adblock) {
-      $('.tip-alert').show(700, 'swing');
-    }
-
-    $('.tip-alert button').click(function() {
-      var newTime = 7 * 24 * 60 * 60 * 1000;
-      var now = new Date().getTime();
-      localStorage.setItem('next_tip', now + newTime);
-    });
-
     var markdownToc = $('#markdown-toc');
     var markdownTocHtml = '';
     if (markdownToc.text().length > 0) {
@@ -88,4 +68,21 @@ $(function() {
   return false;
  });
   }, 50);
+});
+
+
+const mycodeBlocks = document.querySelectorAll('.code-header + .highlighter-rouge');
+const copyCodeButtons = document.querySelectorAll('.copy-code-button');
+
+copyCodeButtons.forEach((copyCodeButton, index) => {
+  const code = mycodeBlocks[index].innerText;
+
+  copyCodeButton.addEventListener('click', () => {
+    window.navigator.clipboard.writeText(code);
+    copyCodeButton.classList.add('copied');
+
+    setTimeout(() => {
+      copyCodeButton.classList.remove('copied');
+    }, 2000);
+  });
 });

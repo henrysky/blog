@@ -14,6 +14,11 @@ body {
   //font-family: Zpix;
 }
 
+@media screen and (max-width: 575px) {
+  body {
+    padding-top: 55px;
+}}
+
 pre {
   border: 0;
   padding: 0.5em;
